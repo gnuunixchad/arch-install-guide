@@ -2,9 +2,9 @@
 @author: nate zhou  
 @since: 2024,2025  
 
-This guide is licensed under the [GNU Free Documentation License 1.3](./LICENSE), it is originally uploaded to:
-- [codeberg](https://codeberg.org/unixchad/arch-install-guide)
-- [github](https://github.com/gnuunixchad/arch-install-guide)
+This guide is licensed under the [GNU Free Documentation License 1.3](./LICENSE), it is originally uploaded to [codeberg](https://codeberg.org/unixchad/arch-install-guide) and [github](https://github.com/gnuunixchad/arch-install-guide).
+
+Configuration files with my installation can be found on [codeberg](https://codeberg.org/unixchad/dotfiles) and [github](https://github.com/gnuunixchad/dotfiles)
 
 # 0. setup
 partition:
