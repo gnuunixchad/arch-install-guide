@@ -1,6 +1,4 @@
-# unixchad's Arch Linux Installation
-@author: nate zhou  
-@since: 2024,2025  
+# <img src="./misc/arch-install-guide-repo.png" width="24"/> Arch Linux Installation Guide
 
 This guide is licensed under the [GNU Free Documentation License 1.3](./LICENSE), it is originally uploaded to [codeberg](https://codeberg.org/unixchad/arch-install-guide) and [github](https://github.com/gnuunixchad/arch-install-guide).
 
