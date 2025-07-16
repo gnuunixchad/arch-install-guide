@@ -7,7 +7,7 @@ Configuration files with my installation can be found on [codeberg](https://code
 # 0. setup
 partition:
 - LVM on LUKS
-- hibernation to swap partition
+- hibernation to encrypted swap partition
 
 boot:
 - UEFI
@@ -381,13 +381,20 @@ nmcli device wifi connect <ssid> password <password> hidden yes
 ```
 
 ## 2.5 install user packages
+- [aur packages]
+- <source packages>
 ```markdown
-### basic tools
-dash zsh zsh-syntax-highlighting vim neovim lf fzf tmux git rsync openssh openbsd-netcat udisks2 zip unzip unrar-free tree bc calc pacman-contrib archlinux-contrib reuild-detector arch-install-scripts dosfstools exfat-utils jq
-### system configuration
-networkmanager brightnessctl tlp ufw firejail cronie bluez-utils bluetui efibootmgr sbctl
+### base
+dash zsh zsh-syntax-highlighting vim neovim [lf-git] fzf tmux git rsync openssh
+openbsd-netcat udisks2 zip unzip unrar-free tree bc calc pacman-contrib
+archlinux-contrib reuild-detector arch-install-scripts dosfstools exfat-utils
+[yay]
 
-### system monitoring
+### system
+networkmanager brightnessctl tlp ufw firejail cronie bluez-utils bluetui
+efibootmgr sbctl
+
+### monitoring
 btop ncdu iftop sysstat smartmontools
 
 ### file sharing
@@ -396,20 +403,22 @@ android-file-transfer samba qrtool
 ### web browser
 w3m firefox firefox-dark-reader firefox-tridactyl firefox-ublock-origin
 
-### window manager/wayland compositor suite
-foot river wlr-randr swaybg swayidle swaylock wmenu wtype wl-clipboard cliphist dunst gammastep slurp grim wf-recorder wl-mirror wob
+### wayland
+foot wlr-randr wl-clipboard cliphist wf-recorder wl-mirror [wshowkeys-mao-git]
+swaybg swayidle swaylock <mew> wtype dunst gammastep slurp grim  wob [lswt]
+<dwl> river <dam> [rivercarro-git] [river-shifttags-git]
 
 ### audio server
-pipewire pipewire-alsa pipewire-pulse pipewire-jack noise-suppression-for-voice pulsemixer
+pipewire pipewire-alsa pipewire-pulse pipewire-jack 
+noise-suppression-for-voice pulsemixer
 
 ### fonts
-adobe-source-code-pro-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-font-awesome ttf-nerd-fonts-symbols
+adobe-source-code-pro-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji
+noto-fonts-extra ttf-font-awesome ttf-nerd-fonts-symbols
 
 ### file viewer
-swayimg zathura zathura-pdf-mupdf bat catimg chafa lsix gnome-epub-thumbnailer poppler ffmpegthumbnailer odt2txt
-
-### touch typing in a terminal
-ttyper
+swayimg zathura zathura-pdf-mupdf bat catimg chafa lsix gnome-epub-thumbnailer
+poppler ffmpegthumbnailer odt2txt
 
 ### multi-media player
 mpv ncmpcpp mpd mpc
@@ -420,73 +429,50 @@ kdenlive gimp
 
 ### virtualization
 virt-manager qemu-base libvirt virt-install dnsmasq openbsd-netcat bridge-utils
-qemu-hw-display-qxl qemu-hw-display-virtio-gpu qemu-hw-display-virtio-gpu-pci qemu-chardev-spice qemu-audio-spice
+qemu-hw-display-qxl qemu-hw-display-virtio-gpu qemu-hw-display-virtio-gpu-pci
+qemu-chardev-spice qemu-audio-spice
 
-### input method engine
+### IME
 fcitx5 fcitx5-chinese-addons fcitx5-configtool fcitx5-gtk fcitx5-qt fcitx5-anthy
+[fcitx5-skin-fluentdark-git]
 
 ### downloader & torrent
 yt-dlp transmission-cli httrack
 
 ### personal tools
-newsboat task calcurse neomutt isync dict
+newsboat task calcurse ttyper
+dict [dict-gcide] [dict-wn]
+
+### offline email
+neomutt isync *cyrus-sasl-xoauth2-git*
 
 ### coding
-jdk-openjdk openjdk-src openjdk-doc xorg-xwayland code nodejs npm
+jdk-openjdk openjdk-src openjdk-doc xorg-xwayland nodejs npm
+code [code-marketplace]
 
 ### themes
-gnome-themes-extra
+gnome-themes-extra [adwaita-qt5] [adwaita-qt5] 
 
-### video driver (nvidia only)
+### nvidia
 nvidia-open nvidia-utils nvtop
 
-### office suite
+### office
 libreoffice-still
 ```
-
-## 2.5.1 aur
-```markdown
-### helper
-yay
-
-### xoauth2 for isync
-cyrus-sasl-xoauth2-git
-
-### river
-lswt rivercarro-git river-shifttags-git
-
-### themes
-adwaita-qt5 adwaita-qt5 fcitx5-skin-fluentdark-git
-
-### directories
-dict-gcide dict-wn
-
-### etc
-wshowkeys-mao-git
-
-### fix
-lf-git code-marketplace
-```
-
-### [example] compile and install
+#### aur packages
 ```sh
     git clone https://aur.archlinux.org/yay.git
     makepkg
     sudo pacman -U yay-*.pkg.tar.zst
 ```
 
-## 2.5.2 local builds
-dwl
-    - https://codeberg.org/unixchad/dwl
-    - https://github.com/gnuunixchad/dwl
-
-dam
-    - https://github.com/gnuunixchad/dam
-    - https://codeberg.org/unixchad/dam
-    - https://codeberg.org/sewn/dam
+#### source packages
+- dwl([codeberg](https://codeberg.org/unixchad/dwl)/[github](https://github.com/gnuunixchad/dwl))
+- dam([codeberg](https://github.com/gnuunixchad/dam)/[github](https://codeberg.org/unixchad/dam))
+- mew([codeberg](https://codeberg.org/unixchad/mew)/[github](https://github.com/gnuunixchad/mew))
 
 ## 2.6 config softwares
-### 2.6.-1 sbctl (secure boot)
+### 2.6.1 sbctl (secure boot)
 1. reboot into UEFI utilities, restore secure boot's factory keys, and enter
 `setup mode`
 
@@ -529,14 +515,14 @@ Vendor Keys:	microsoft
 8. make sure `systemd-boot-update.service` is enabled for auto signing the
 future bootloaders and kernels
 
-### 2.6.0 automatically clean pacman cache
+### 2.6.2 automatically clean pacman cache
 ```sh
 # remove unused packages weekly by `paccache` command from `pacman-contrib`
 # package. (default keeps the last 3 versions of a package)
 systemctl enable --now paccache.timer
 ```
 
-### 2.6.1 tlp battery charing threshold
+### 2.6.3 tlp battery charing threshold
 edit `/etc/tlp.conf`
 ```/etc/tlp.conf
     STOP_CHARGE_THRESH_BAT1=80
@@ -546,7 +532,7 @@ edit `/etc/tlp.conf`
 sudo systemctl enable --now tlp.service
 ```
 
-### 2.6.2 mandb database update
+### 2.6.4 mandb database update
 ```sh
 sudo mandb
 ```
