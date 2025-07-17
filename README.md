@@ -406,10 +406,10 @@ w3m firefox firefox-dark-reader firefox-tridactyl firefox-ublock-origin
 ### wayland
 foot wlr-randr wl-clipboard cliphist wf-recorder wl-mirror [wshowkeys-mao-git]
 swaybg swayidle swaylock <mew> wtype dunst gammastep slurp grim  wob [lswt]
-<dwl> river <dam> [rivercarro-git] [river-shifttags-git]
+wlroots0.18 <dwl> river <dam> [rivercarro-git] [river-shifttags-git]
 
 ### audio server
-pipewire pipewire-alsa pipewire-pulse pipewire-jack 
+pipewire pipewire-alsa pipewire-pulse pipewire-jack
 noise-suppression-for-voice pulsemixer
 
 ### fonts
