@@ -385,7 +385,7 @@ nmcli device wifi connect <ssid> password <password> hidden yes
 - <source packages>
 ```markdown
 ### base
-dash zsh zsh-syntax-highlighting vim neovim [lf-git] fzf tmux git rsync openssh
+dash zsh zsh-syntax-highlighting vim neovim lf fzf tmux git rsync openssh
 openbsd-netcat udisks2 zip unzip unrar-free tree bc calc pacman-contrib
 archlinux-contrib reuild-detector arch-install-scripts dosfstools exfat-utils
 [yay]
