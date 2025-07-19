@@ -2,17 +2,17 @@
 
 This guide is licensed under the [GNU Free Documentation License 1.3](./LICENSE), it is originally uploaded to [codeberg](https://codeberg.org/unixchad/arch-install-guide) and [github](https://github.com/gnuunixchad/arch-install-guide).
 
-Configuration files with my installation can be found on [codeberg](https://codeberg.org/unixchad/dotfiles) and [github](https://github.com/gnuunixchad/dotfiles)
+Configuration files with my installation can be found on [codeberg](https://codeberg.org/unixchad/dotfiles) and [github](https://github.com/gnuunixchad/dotfiles)(You might see few files linking to `./dotfiles/path/to/file`, its in this repository).
 
 # 0. setup
 partition:
 - LVM on LUKS
-- hibernation to encrypted swap partition
+- Hibernation to encrypted swap partition
 
 boot:
-- UEFI
-- systemd-boot
-- Secure Boot with `sbctl`
+- Firmware:         UEFI
+- Bootloader:       systemd-boot
+- Secure Boot:      sbctl
 
 ```lsblk
   NAME              SIZE  TYPE  MOUNTPOINTS
@@ -30,6 +30,16 @@ boot:
 ```
 
 # 1. archiso
+Verify the PGP signature
+```sh
+# You might need to change DNS resolve e.g. `1.1.1.1` if you have trouble
+# connecting to a key server, or manually download Arch developer's public key:
+# You can visit Pierre's website for details: https://pierre-schmitz.com/gpg-keys/
+
+gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.sig
+# or on an existing arch system
+pacman-key -v archlinux-version-x86_64.iso.sig
+```
 ## 1.1 ventoy
 Bootable ISO USB drive created with `ventoy-1.0.99`
 
@@ -43,7 +53,7 @@ setfont /usr/share/kbd/consolefonts/iso01-12x22.psfu.gz
 # get full manual of iwct
 iwctl help | less
 
-# list network interface
+# list network interface for <device> name
 iwctl device list
 
 # connect hidden wifi
@@ -58,18 +68,19 @@ ping -c 3 archlinux.org
 ```sh
 timedatectl set-timezone Region/City
 
-# check NTP
+# check NTP (unsynchronized time could cause package installing issues)
 timedatectl
 ```
 
-## 1.5 partitioning
+## 1.5 partitioning (optional)
+Skip this step when reinstall Arch to a disk with the old partitions.
 ```sh
 # read `fdisk`'s manual
 fdisk /dev/nvme0n1 <<< m | less
 # `<<<` is the "here string", this command send `m` to `fdisk /dev/nvme0n1` and
-# piping to `less`, useful when console screen isn't enough
+# pipe to `less`, useful when console screen isn't enough
 
-# subcommands
+# Use the following `fdisk` subcommands to perform partitioning
 # `p` print
 # `F` Free
 # `d` delete
@@ -138,18 +149,18 @@ swapon /dev/vg0/swap
 
 ## 1.8 install the operating system and linux kernel
 ```sh
-# enable parallel downloads for pacman
+# enable parallel downloads for pacman (Optional)
 vim /etc/pacman.conf
 # uncomment `#ParallelDownloads = 5`
 
-# change mirrorlist
+# change mirrorlist priority
 reflector --save /etc/pacman.d/mirrorlist
 
 # update keyring
 pacman -Sy && pacman -S archlinux-keyring
 # When you use an Arch Linux ISO that was released months ago, the included
 # keyring may be outdated. The Arch Linux keyring contains the public keys used
-# to verify the signatures of packages
+# to verify the signatures of packages.
 
 # install packages
 pacstrap -K /mnt base base-devel linux linux-headers linux-firmware intel-ucode cryptsetup lvm2 vim neovim networkmanager man-db man-pages bash-completion
@@ -203,12 +214,14 @@ LANG=en_US.UTF-8
 
 ## 1.13 create hostname
 ```sh
+# replace `fx507` with your hostname
 echo fx507 >> /etc/hostname
 ```
 
 ## 1.14.1 configure localhost
-edit `/etc/hosts`
+edit `/etc/hosts` into:
 ```/etc/hosts
+# replace `fx507` with your hostname
 127.0.0.1       localhost
 ::1             localhost
 127.0.1.1       fx507.localdomain fx507
@@ -227,13 +240,17 @@ This fixes `gpg` keyserver resolve
 ```sh
 cd /root
 
+# generate a ramdon 4096 byte key file
 dd if=/dev/urandom of=/root/cryptkey bs=1024 count=4
 
+# read-only
 chmod 400 cryptkey
+# immutable
 chattr +i cryptkey
 
 cryptsetup luksAddKey /dev/nvme0n1p3 /root/cryptkey
 
+# redirect UUIDs for convince
 blkid >> /etc/crypttab
 ```
 
@@ -243,7 +260,8 @@ edit `/etc/crypttab`
 crypthome <uuid> /root/cryptkey luks,discard
 ```
 
-## 1.15.1 kill no longer used key slot
+## 1.15.1 kill no longer used key slot (Optional)
+If you are re-using the existing LUKS container and have obsoleted keys:
 ```sh
 # list all key slots
 cryptsetup luksDump /dev/nvme0n1p3 | less
@@ -381,8 +399,9 @@ nmcli device wifi connect <ssid> password <password> hidden yes
 ```
 
 ## 2.5 install user packages
-- [aur packages]
-- <source packages>
+- `official repo packages`
+- `[aur packages]`
+- `<source packages>`
 ```markdown
 ### base
 dash zsh zsh-syntax-highlighting vim neovim lf fzf tmux git rsync openssh
@@ -451,7 +470,7 @@ jdk-openjdk openjdk-src openjdk-doc xorg-xwayland nodejs npm
 code [code-marketplace]
 
 ### themes
-gnome-themes-extra [adwaita-qt5] [adwaita-qt5] 
+gnome-themes-extra [adwaita-qt5] [adwaita-qt5]
 
 ### nvidia
 nvidia-open nvidia-utils nvtop
@@ -523,11 +542,11 @@ systemctl enable --now paccache.timer
 ```
 
 ### 2.6.3 tlp battery charing threshold
-edit `/etc/tlp.conf`
+edit and uncomment this line in `/etc/tlp.conf`
 ```/etc/tlp.conf
-    STOP_CHARGE_THRESH_BAT1=80
+STOP_CHARGE_THRESH_BAT1=80
 ```
-
+start tlp service
 ```sh
 sudo systemctl enable --now tlp.service
 ```
@@ -579,27 +598,33 @@ systemctl enable --now sshd.service
 systemctl enable --now --user ssh-agent.service
 ```
 
-#### 2.6.8.2 import ssh pub key (on nuc11)
+#### 2.6.8.2 import ssh pub key (Optional)
+If this is a system that you would like to ssh into:
+
 ```sh
-# entering the directory where the pub key locates
+# change directory to where the pub key locates
 cd ~/.ssh
-# use smbclient to move pub key to nuc11
+# use smbclient to move pub key to ssh server, replace `nate` with username
 smbclient //192.168.xx.xx/smb -U nate
 # `-U nate` can be omitted if samba server's user name is the same
 # share name shall be identical in /etc/samba/smb.conf like [smb]
+```
 
+in smbclient shell:
 ```smbclient
 # copy the local file to the server
 put ~/.ssh/id_rsa.pub
 ```
 
+on the samba server
 ```sh
-# on the samba server, import pub key for sshd
+# import pub key for sshd
 cat ~/smb/id_rsa.pub >> ~/.ssh/authorized_keys
 sudo systemctl restart sshd.service
 ```
 
-### 2.6.9 termux file syncing to android phone setup
+### 2.6.9 termux file syncing to android phone setup (Optional)
+If you want to use termux for rsync over ssh on android:
 ```sh
 # create termux user for syncing files to android phone
 sudo useradd -m termux
@@ -608,17 +633,17 @@ sudo usermod -aG nate termux
 
 # on termux copy `~/.ssh/id_rsa.pub`, write to clipboard.txt on smb share
 
-# if on wayland, copy to paste
+# For wayland, copy to paste
 cat ~/smb/clipboard.txt | wl-copy
 
-# change user to termux with sudo (never create password for the termux user)
+# change user to termux with sudo (NEVER create a password for termux user!)
 sudo su - termux
 mkdir ~/.ssh
 
-# import pub key to sshd
+# import pub key to server
 echo "<paste pub key here>" > .ssh/authorized_keys
 
-# restart sshd
+# restart ssh server
 sudo systemctl restart sshd.service
 ```
 
@@ -685,7 +710,7 @@ sudo virsh net-autostart defaul
 gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 ```
 
-### 2.6.14 nvidia fix hibernation
+### 2.6.14 nvidia hibernation fixes
 ```sh
 sudo systemctl enable nvidia-suspend.service
 sudo systemctl enable nvidia-hibernate.service
@@ -722,7 +747,7 @@ HandlePowerKey=hibernate
 
 ### 2.6.17 change default shell & login shell
 ```sh
-# a pacman [HOOK](etc/pacman.d/hooks/default-shell-symlink.hook) is needed to
+# a pacman [HOOK](./dotfiles/etc/pacman.d/hooks/default-shell-symlink.hook) is needed to
 # reassign symlink after every bash upgrade
 sudo ln -sf /usr/bin/dash /usr/bin/sh
 chsh -s /usr/bin/zsh
