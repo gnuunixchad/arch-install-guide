@@ -56,7 +56,7 @@ ping -c 3 archlinux.org
 
 ## 1.4 update the system clock
 ```sh
-timedatectl set-timezon Region/City
+timedatectl set-timezone Region/City
 
 # check NTP
 timedatectl
@@ -143,7 +143,7 @@ vim /etc/pacman.conf
 # uncomment `#ParallelDownloads = 5`
 
 # change mirrorlist
-reflactor --save /etc/pacman.d/mirrorlist
+reflector --save /etc/pacman.d/mirrorlist
 
 # update keyring
 pacman -Sy && pacman -S archlinux-keyring
@@ -341,7 +341,7 @@ systemctl enable systemd-boot-update.service`
 exit
 
 # unmount partitions
-umoun -R /mnt
+umount -R /mnt
 swapoff -a
 
 # leave archiso
