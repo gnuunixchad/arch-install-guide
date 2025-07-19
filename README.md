@@ -341,7 +341,7 @@ systemctl enable systemd-boot-update.service`
 exit
 
 # unmount partitions
-umoun -R /mnt
+umount -R /mnt
 swapoff -a
 
 # leave archiso
