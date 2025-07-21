@@ -420,7 +420,7 @@ btop ncdu iftop sysstat smartmontools
 android-file-transfer samba qrtool
 
 ### web browser
-w3m firefox firefox-dark-reader firefox-tridactyl firefox-ublock-origin
+w3m qutebrowser firefox firefox-dark-reader firefox-tridactyl firefox-ublock-origin
 
 ### wayland
 foot wlr-randr wl-clipboard cliphist wf-recorder wl-mirror [wshowkeys-mao-git]
