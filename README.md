@@ -518,6 +518,7 @@ sudo sbctl sign-all
 sudo sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
 sudo sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sudo sbctl sign -s /boot/vmlinuz-linux
+sudo sbctl sign -s -o /usr/lib/systemd/boot/efi/systemd-bootx64.efi.signed /usr/lib/systemd/boot/efi/systemd-bootx64.efi
 ```
 
 6. reboot into UEFI utilities, secure boot should be enabled automatically, if
