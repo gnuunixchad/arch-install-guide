@@ -404,7 +404,7 @@ nmcli device wifi connect <ssid> password <password> hidden yes
 - `<source packages>`
 ```markdown
 ### base
-dash zsh zsh-syntax-highlighting vim neovim lf fzf tmux git rsync openssh
+dash zsh zsh-syntax-highlighting vim neovim lf fzf <dvtm> <abduco> tmux git rsync openssh
 openbsd-netcat udisks2 zip unzip unrar-free stow tree bc calc pacman-contrib
 archlinux-contrib rebuild-detector arch-install-scripts dosfstools exfat-utils
 [yay]
@@ -489,6 +489,8 @@ libreoffice-still
 - dwl([codeberg](https://codeberg.org/unixchad/dwl)/[github](https://github.com/gnuunixchad/dwl))
 - dam([codeberg](https://github.com/gnuunixchad/dam)/[github](https://codeberg.org/unixchad/dam))
 - mew([codeberg](https://codeberg.org/unixchad/mew)/[github](https://github.com/gnuunixchad/mew))
+- dvtm([codeberg](https://codeberg.org/unixchad/dvtm)/[github](https://github.com/gnuunixchad/dvtm))
+- abduco([codeberg](https://codeberg.org/unixchad/abduco)/[github](https://github.com/gnuunixchad/abduco))
 
 ## 2.6 config softwares
 ### 2.6.1 sbctl (secure boot)
