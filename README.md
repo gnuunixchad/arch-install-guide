@@ -434,7 +434,7 @@ noise-suppression-for-voice pulsemixer
 
 ### fonts
 adobe-source-code-pro-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji
-noto-fonts-extra ttf-font-awesome ttf-nerd-fonts-symbols
+noto-fonts-extra woff2-font-awesome ttf-nerd-fonts-symbols
 
 ### file viewer
 swayimg zathura zathura-pdf-mupdf bat catimg chafa lsix gnome-epub-thumbnailer
