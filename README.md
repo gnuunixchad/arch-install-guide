@@ -393,6 +393,7 @@ remove the `~/.bash_profile` if exist as `~/.bash_profile` would override
 ## 2.4 enable networkmanager and connect to hidden wifi
 ```sh
 systemctl enable --now NetworkManager.service
+systemctl enable --now bluetooth.service
 
 # run the following twice, as the first attemp would fail for ssid not found
 nmcli device wifi connect <ssid> password <password> hidden yes
