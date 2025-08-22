@@ -758,6 +758,12 @@ sudo ln -sf /usr/bin/dash /usr/bin/sh
 chsh -s /usr/bin/zsh
 ```
 
+### 2.6.18 cronjob
+```sh
+crontab ~/doc/heart/.config/crontab.backup
+sudo systemctl enable --now cronie.service
+```
+
 # 3.0 restore files from a backup media
 ```sh
 # unlock and mount the backup disk
