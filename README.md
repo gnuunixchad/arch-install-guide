@@ -705,7 +705,7 @@ firewall_backend = "iptables"
 ```sh
 sudo systemctl enable --now libvirtd
 sudo virsh net-define /etc/libvirt/qemu/networks/default.xml
-sudo virsh net-autostart defaul
+sudo virsh net-autostart default
 # uncomment dnsmasq in /etc/firejail/firecfg.config
 ```
 
@@ -767,7 +767,6 @@ sudo systemctl enable --now cronie.service
 ### 3.6.19 neovim
 ```vim
 :PlugInstall
-:TSInstall bash diff c vim ...
 ```
 
 # 3.0 restore files from a backup media
