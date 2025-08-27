@@ -764,6 +764,12 @@ crontab ~/doc/heart/.config/crontab.backup
 sudo systemctl enable --now cronie.service
 ```
 
+### 3.6.19 neovim
+```vim
+:PlugInstall
+:TSInstall bash diff c vim ...
+```
+
 # 3.0 restore files from a backup media
 ```sh
 # unlock and mount the backup disk
