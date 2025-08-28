@@ -40,8 +40,13 @@ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.
 # or on an existing arch system
 pacman-key -v archlinux-version-x86_64.iso.sig
 ```
-## 1.1 ventoy
+## 1.0 ventoy
 Bootable ISO USB drive created with `ventoy-1.0.99`
+
+## 1.1 vi keybindings
+```sh
+set -o vi
+```
 
 ## 1.2 increase console font
 ```sh
@@ -105,13 +110,19 @@ cryptsetup open /dev/nvme1n1p1 cryptdata
 
 # create physical volume for LVM on the top of the LUKS container
 pvcreate /dev/mapper/cryptlvm
+# check with pvdisplay
+pvdisplay
 
 # create the volume group for LVM, name it `vg0`
 vgcreate vg0 /dev/mapper/cryptlvm
+# check with vgdisplay
+vgdisplay
 
 # create the logical volumes inside the volume group
-lvcreate -L 16G vg0 -n swap
-lvcreate -l 100%FREE vg0 -n root
+lvcreate -L 16G -n swap vg0
+lvcreate -l 100%FREE -n root vg0
+# check with lvdisplay
+lvdisplay
 
 # format the logical volumes for root
 mkfs.ext4 /dev/vg0/root
@@ -185,6 +196,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 ## 1.10 chroot into the new system
 ```sh
 arch-chroot /mnt
+set -o vi
 ```
 
 ## 1.11 configure timezone and clock
@@ -196,10 +208,9 @@ ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
 hwclock --systohc
 ```
 ## 1.12 configure locale
-
 uncomment in `/etc/locale.gen`
-```/etc/locale.gen
-en_US.UTF-8 UTF-8
+```sh
+sed -i '/^#en_US.UTF-8/s/^#//' /etc/locale.gen
 ```
 
 Generate locales
@@ -208,17 +219,17 @@ locale-gen
 ```
 
 append `/etc/locale.conf`
-```/etc/locale.conf
-LANG=en_US.UTF-8
+```sh
+echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 ```
 
 ## 1.13 create hostname
 ```sh
 # replace `fx507` with your hostname
-echo fx507 >> /etc/hostname
+echo 'fx507' > /etc/hostname
 ```
 
-## 1.14.1 configure localhost
+## 1.14 configure localhost
 edit `/etc/hosts` into:
 ```/etc/hosts
 # replace `fx507` with your hostname
@@ -226,15 +237,6 @@ edit `/etc/hosts` into:
 ::1             localhost
 127.0.1.1       fx507.localdomain fx507
 ```
-
-## 1.14.2 configure DNS resolution
-edit `/etc/resolv.conf`
-```/etc/resolv.conf
-# CloudFlare's DNS
-nameserver 1.1.1.1
-```
-
-This fixes `gpg` keyserver resolve
 
 ## 1.15 add a key file to luks container
 ```sh
@@ -250,14 +252,14 @@ chattr +i cryptkey
 
 cryptsetup luksAddKey /dev/nvme0n1p3 /root/cryptkey
 
-# redirect UUIDs for convince
-blkid >> /etc/crypttab
+# get UUIDs
+echo '#'$(blkid | grep '/dev/nvme0n1p3') >> /etc/crypttab
 ```
 
 edit `/etc/crypttab`
 ```/etc/crypttab
-# <uuid> of the luks containers
-crypthome <uuid> /root/cryptkey luks,discard
+#<mapper_name> UUID=<uuid>        <password>     <options>
+crypthome      UUID=abcd-1234-xyz /root/cryptkey luks,discard
 ```
 
 ## 1.15.1 kill no longer used key slot (Optional)
@@ -304,7 +306,7 @@ passwd nate
 visudo
 ```
 uncomment
-```visudo
+```/etc/sudoers.tmp
 %wheel ALL=(ALL:ALL) ALL
 ```
 
@@ -323,29 +325,34 @@ console-mode 0
 
 get encrypted device and root partition UUID
 ```sh
-`blkid >> /boot/loader/entries/arch.conf`
+# get UUID of the encrypted physical volume
+echo '#'$(blkid | grep 'nvme0n1p2') > /boot/loader/entries/arch.conf
+# get UUID of the logic volume of root
+echo '#'$(blkid | grep 'vg0-root') >> /boot/loader/entries/arch.conf
 ```
 
 edit `/boot/loader/entries/arch.conf`
 ```/boot/loader/entries/arch.conf
 title Arch Linux
 linux /vmlinuz-linux
-initrd /intel-ucode.img
 initrd /initramfs-linux.img
-options cryptdevice=UUID=<UUID-OF-PHYSICAL-PARTITION>:cryptlvm root=UUID=<UUID-OF-ROOT-LOGICAL-VOLUME>
-
-# cryptdevice is the partition of luks container (in this case /dev/nvme0n1p2)
-# root is the logical volume partition (in this case /dev/vg0/root)
+options cryptdevice=UUID=<UUID-OF-nvme0n1p2>:cryptlvm root=UUID=<UUID-OF-vg0-root>
+# example
+options cryptdevice=UUID=1234-abcd:cryptlvm root=UUID=5678-wxyz
 ```
+- If another kernel is installed, change `/vmlinuz-linux`.
+- If the device is not encrypted, omit `cryptdevice=UUID=<uuid>:cryptlvm`
 
-optionally `cp /boot/loader/entries/arch.conf /boot/loader/entries/arch-fallback.conf`,
+optionally, create a fallback entry
+```sh
+cp /boot/loader/entries/arch{,-fallback}.conf
+```
 edit `/boot/loader/entries/arch-fallback.conf`
 ```/boot/loader/entries/arch-fallback.conf
 title Arch Linux
 linux /vmlinuz-linux
-initrd /intel-ucode.img
 initrd /initramfs-linux-fallback.img
-options cryptdevice=UUID=<UUID-OF-PHYSICAL-PARTITION>:cryptlvm root=UUID=<UUID-OF-ROOT-LOGICAL-VOLUME>
+options cryptdevice=UUID=<UUID-OF-nvme0n1p2>:cryptlvm root=UUID=<UUID-OF-vg0-root>
 ```
 
 enable auto update systemd-boot
@@ -369,37 +376,19 @@ reboot
 # 2. post installation
 login as root
 
-## 2.1 setfont again temporally
+## 2.1 set fonts
 ```sh
-setfont /usr/share/kbd/consolefonts/iso01-12x22.psfu.gz
+setfont -d
 ```
 
-## 2.2 set tty font permanently (take effect after reboot)
-edit `/etc/vconsole.conf`
-```/etc/vconsole.conf
-FONT=iso01-12x22
-# for HiDPI:
-FONT=latarcyrheb-sun32
-```
-
-## 2.3 config bashrc a bit
-```sh
-set -o vi
- ```
-
-remove the `~/.bash_profile` if exist as `~/.bash_profile` would override
-`~/.profile`
-
-## 2.4 enable networkmanager and connect to hidden wifi
+## 2.2 enable networkmanager and connect to hidden wifi
 ```sh
 systemctl enable --now NetworkManager.service
-systemctl enable --now bluetooth.service
-
 # run the following twice, as the first attemp would fail for ssid not found
 nmcli device wifi connect <ssid> password <password> hidden yes
 ```
 
-## 2.5 install user packages
+## 2.3 install user packages
 - `official repo packages`
 - `[aur packages]`
 - `<source packages>`
@@ -471,8 +460,9 @@ neomutt isync *cyrus-sasl-xoauth2-git*
 jdk-openjdk openjdk-src openjdk-doc xorg-xwayland nodejs npm
 code [code-marketplace]
 
+## 2.3.1
 ### themes
-gnome-themes-extra [adwaita-qt5] [adwaita-qt5]
+gnome-themes-extra [adwaita-qt5-git] [adwaita-qt5-git]
 
 ### nvidia
 nvidia-open nvidia-utils nvtop
@@ -493,6 +483,31 @@ libreoffice-still
 - mew([codeberg](https://codeberg.org/unixchad/mew)/[github](https://github.com/gnuunixchad/mew))
 - dvtm([codeberg](https://codeberg.org/unixchad/dvtm)/[github](https://github.com/gnuunixchad/dvtm))
 - abduco([codeberg](https://codeberg.org/unixchad/abduco)/[github](https://github.com/gnuunixchad/abduco))
+
+## 2.3.2 use my post-install script at your own risk
+which automates most of the rest steps
+```sh
+# clone my dotfiles repo and run
+./dotfiles/install-user.sh
+sudo ./dotfiles/install-root.sh
+```
+
+## 2.4 set tty font permanently (take effect after reboot)
+edit `/etc/vconsole.conf`
+```/etc/vconsole.conf
+FONT=iso01-12x22
+# for HiDPI:
+FONT=latarcyrheb-sun32
+```
+
+## 2.5 config bash
+```sh
+set -o vi
+ ```
+
+remove the `~/.bash_profile` if exist as `~/.bash_profile` would override
+`~/.profile`
+
 
 ## 2.6 config softwares
 ### 2.6.1 sbctl (secure boot)
@@ -767,6 +782,11 @@ sudo systemctl enable --now cronie.service
 ### 3.6.19 neovim
 ```vim
 :PlugInstall
+```
+
+### 3.6.20 bluetooth
+```sh
+systemctl enable --now bluetooth.service
 ```
 
 # 3.0 restore files from a backup media
