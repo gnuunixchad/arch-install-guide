@@ -395,7 +395,7 @@ nmcli device wifi connect <ssid> password <password> hidden yes
 ```markdown
 ### base
 dash zsh zsh-syntax-highlighting vim neovim lf fzf <dvtm> <abduco> git rsync openssh
-openbsd-netcat udisks2 zip unzip unrar-free stow tree bc calc pacman-contrib
+openbsd-netcat udisks2 zip unzip 7zip unrar-free stow tree bc calc pacman-contrib
 archlinux-contrib rebuild-detector arch-install-scripts dosfstools exfat-utils
 [yay]
 
