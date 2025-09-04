@@ -4,6 +4,10 @@ This guide is licensed under the [GNU Free Documentation License 1.3](./LICENSE)
 
 Configuration files with my installation can be found on [codeberg](https://codeberg.org/unixchad/dotfiles) and [github](https://github.com/gnuunixchad/dotfiles)(You might see few files linking to `./dotfiles/path/to/file`, its in this repository).
 
+Most of the post-install configuration can be automated by my script. There is no warranty and run at your own risk:
+1. `install-root.sh`([codeberg](https://codeberg.org/unixchad/dotfiles/src/branch/master/install-root.sh)/[github](https://github.com/gnuunixchad/dotfiles/blob/master/install-root.sh))
+2. `install-user.sh`([codeberg](https://codeberg.org/unixchad/dotfiles/src/branch/master/install-user.sh)/[github](https://github.com/gnuunixchad/dotfiles/blob/master/install-user.sh))
+
 # 0. setup
 partition:
 - LVM on LUKS
