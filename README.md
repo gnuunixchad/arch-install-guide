@@ -389,6 +389,16 @@ nmcli device wifi connect <ssid> password <password> hidden yes
 ```
 
 ## 2.3 install user packages
+```sh
+# export installed packages to a list file
+pacman -Qmq | sort > "$HEART"/aur.list
+pacman -Qenq | sort > "$HEART"/arch.list
+
+# install packages from a package list
+ARCH_LIST="/path/to/arch.list"
+[ -f "$ARCH_LIST" ] && pacman -S --noconfirm --needed $(cat "$ARCH_LIST") 2>/dev/null
+```
+
 - `official repo packages`
 - `[aur packages]`
 - `<source packages>`
