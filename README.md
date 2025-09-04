@@ -164,9 +164,9 @@ swapon /dev/vg0/swap
 
 ## 1.8 install the operating system and linux kernel
 ```sh
-# enable parallel downloads for pacman (Optional)
-vim /etc/pacman.conf
-# uncomment `#ParallelDownloads = 5`
+# config pacman
+sed -i '/^#Color$/s/#//' /etc/pacman.conf
+sed -i '/^#ParallelDownloads = 5/s/#//' /etc/pacman.conf
 
 # change mirrorlist priority
 reflector --save /etc/pacman.d/mirrorlist
