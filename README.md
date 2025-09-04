@@ -404,7 +404,7 @@ networkmanager brightnessctl tlp ufw firejail cronie bluez-utils bluetui
 efibootmgr sbctl
 
 ### monitoring
-btop ncdu iftop sysstat smartmontools
+btop ncdu iftop sysstat smartmontools powertop
 
 ### file sharing
 android-file-transfer samba qrtool
