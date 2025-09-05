@@ -410,7 +410,7 @@ ARCH_LIST="/path/to/arch.list"
 ### base
 dash zsh zsh-syntax-highlighting vim neovim lf fzf <dvtm> <abduco> git rsync openssh
 openbsd-netcat udisks2 zip unzip 7zip unrar-free stow tree bc calc pacman-contrib
-archlinux-contrib rebuild-detector arch-install-scripts dosfstools exfat-utils
+archlinux-contrib arch-wiki-docs rebuild-detector arch-install-scripts dosfstools exfat-utils
 [yay]
 
 ### system
