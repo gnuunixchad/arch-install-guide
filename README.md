@@ -476,7 +476,7 @@ code [code-marketplace]
 
 ## 2.3.1
 ### themes
-gnome-themes-extra [adwaita-qt5-git] [adwaita-qt5-git]
+qt6ct gnome-themes-extra [adwaita-qt5-git] [adwaita-qt5-git]
 
 ### nvidia
 nvidia-open nvidia-utils nvtop
