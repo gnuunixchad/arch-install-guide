@@ -408,9 +408,10 @@ ARCH_LIST="/path/to/arch.list"
 - `<source packages>`
 ```markdown
 ### base
-dash zsh zsh-syntax-highlighting vim neovim lf fzf <dvtm> <abduco> git rsync openssh
-openbsd-netcat udisks2 zip unzip 7zip unrar-free stow tree bc calc pacman-contrib
-archlinux-contrib arch-wiki-docs reflactor rebuild-detector arch-install-scripts dosfstools exfat-utils
+dash zsh zsh-syntax-highlighting vim neovim lf fzf <dvtm> <abduco> git rsync
+openssh openbsd-netcat udisks2 zip unzip 7zip unrar-free stow tree bc calc
+pacman-contrib archlinux-contrib arch-wiki-docs reflactor rebuild-detector
+arch-install-scripts dosfstools exfat-utils wget
 [yay]
 
 ### system
@@ -424,12 +425,14 @@ btop ncdu iftop sysstat smartmontools powertop
 android-file-transfer samba qrtool
 
 ### web browser
-w3m qutebrowser firefox firefox-dark-reader firefox-tridactyl firefox-ublock-origin
+w3m qutebrowser firefox firefox-dark-reader firefox-tridactyl
+firefox-ublock-origin
 
 ### wayland
 foot wlr-randr kanshi wl-clipboard cliphist wf-recorder wl-mirror
-[wshowkeys-mao-git] swaybg swayidle swaylock <mew> wtype dunst gammastep slurp
-grim  wob wev [lswt] wlroots0.18 <dwl> river <dam> [rivercarro-git]
+[wshowkeys-mao-git] swaybg swayidle swaylock <mew> wtype libnotify dunst gammastep slurp
+grim  wob wev [lswt] wlroots0.18 fcft tllist wayland-protocols <dwl> river <dam>
+[rivercarro-git]
 [river-shifttags-git] [wlrctl]
 
 ### audio server
