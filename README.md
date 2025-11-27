@@ -441,7 +441,7 @@ adobe-source-code-pro-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji
 noto-fonts-extra woff2-font-awesome ttf-nerd-fonts-symbols
 
 ### file viewer
-swayimg zathura zathura-pdf-mupdf bat glow catimg chafa lsix gnome-epub-thumbnailer
+swayimg zathura zathura-pdf-mupdf bat catimg chafa lsix gnome-epub-thumbnailer
 poppler ffmpegthumbnailer odt2txt
 
 ### multi-media player
@@ -472,7 +472,7 @@ neomutt isync *cyrus-sasl-xoauth2-git*
 
 ### coding
 jdk-openjdk openjdk-src openjdk-doc xorg-xwayland nodejs npm
-code [code-marketplace]
+code
 
 ## 2.3.1
 ### themes
