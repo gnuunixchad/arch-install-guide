@@ -425,8 +425,7 @@ btop ncdu iftop sysstat smartmontools powertop
 android-file-transfer samba qrtool
 
 ### web browser
-w3m qutebrowser firefox firefox-dark-reader firefox-tridactyl
-firefox-ublock-origin
+w3m qutebrowser
 
 ### wayland
 foot wlr-randr kanshi wl-clipboard cliphist wf-recorder wl-mirror
@@ -765,22 +764,6 @@ edit `/etc/systemd/logind.conf`
 # uncomment and modify to:
 HandlePowerKey=hibernate
 ```
-
-### 2.6.16 firefox
-1. copy and modify `user.js`, `userChrome.css`
-2. tridactyl
-    - change scroll steps
-        - `:bind j scrollline 2`
-        - `:bind k scrollline -2`
-    - add new bindings
-        - `:bind n scrollline 10`
-        - `:bind p scrollline -10`
-    - focus movement actions on elements
-        - `:bind i hint -; *`
-    - make hint mode actually readable
-        - `:set hintstyle.bg none`
-        - `:set hintstyle.fg none`
-        - `:set hintstyle.outline all`
 
 ### 2.6.17 change default shell & login shell
 ```sh
