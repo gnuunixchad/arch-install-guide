@@ -425,7 +425,7 @@ btop ncdu iftop sysstat smartmontools powertop
 android-file-transfer samba qrtool
 
 ### web browser
-w3m qutebrowser
+w3m qutebrowser python-adblock
 
 ### wayland
 foot wlr-randr kanshi wl-clipboard cliphist wf-recorder wl-mirror
