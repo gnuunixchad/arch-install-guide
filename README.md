@@ -473,7 +473,7 @@ dict [dict-gcide] [dict-wn]
 neomutt isync *cyrus-sasl-xoauth2-git*
 
 ### coding
-jdk-openjdk openjdk-src openjdk-doc xorg-xwayland nodejs npm
+jdk-openjdk openjdk-src openjdk-doc xorg-xwayland nodejs
 code
 
 ## 2.3.1
