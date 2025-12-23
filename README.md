@@ -790,6 +790,13 @@ sudo systemctl enable --now cronie.service
 systemctl enable --now bluetooth.service
 ```
 
+### 2.6.21 set seat backend to seatd
+```sh
+# add user nate to seat group to have access to seat socket in a GUI environment
+sudo usermod -aG seat nate
+systemctl enable --now seatd.service
+```
+
 # 3.0 restore files from a backup media
 ```sh
 # unlock and mount the backup disk
