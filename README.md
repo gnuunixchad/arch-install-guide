@@ -483,6 +483,28 @@ qt6ct gnome-themes-extra [adwaita-qt5-git] [adwaita-qt5-git]
 
 ### nvidia
 nvidia-open nvidia-utils nvtop
+> [!Note]
+> The nvidia-open driver regression introduced since `580.105.08` causes
+> system hibernation not reaching ACPI S4 power-off on my ASUS
+> laptop(Intel iGPU + Nvidia dGPU) with Arch Linux. The screen turns off
+> but not the fans keep spinning forever.
+>
+> There's no trouble in writing the RAM into swap and resuming from the
+> image, after long pressing the power button to power off the laptop and
+> manually power it on.
+>
+> The issues happens among `580.105.08`, `580.119.02`, `590.48.01`, which
+> lasts for more than a month, and is not caused by kernels but Nvidia
+> drivers.
+>
+> A workaround is to switch to an older version of dkms drivers
+> (`580.95.05`)  and ignore the driver update until the regression is
+> fixed.
+>
+> See:
+> - https://forums.developer.nvidia.com/t/580-105-08-regression-hibernate-s4-no-longer-powers-off-fans-stay-on-resume-still-works/351504
+> - https://archive.archlinux.org/packages/n/nvidia-open/
+> - https://archive.archlinux.org/packages/n/nvidia-utils/
 
 ### office
 libreoffice-still
