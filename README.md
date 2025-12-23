@@ -780,12 +780,12 @@ crontab ~/doc/heart/.config/crontab.backup
 sudo systemctl enable --now cronie.service
 ```
 
-### 3.6.19 neovim
+### 2.6.19 neovim
 ```vim
 :PlugInstall
 ```
 
-### 3.6.20 bluetooth
+### 2.6.20 bluetooth
 ```sh
 systemctl enable --now bluetooth.service
 ```
