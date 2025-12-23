@@ -342,10 +342,11 @@ linux /vmlinuz-linux
 initrd /initramfs-linux.img
 options cryptdevice=UUID=<UUID-OF-nvme0n1p2>:cryptlvm root=UUID=<UUID-OF-vg0-root>
 # example
-options cryptdevice=UUID=1234-abcd:cryptlvm root=UUID=5678-wxyz
+options cryptdevice=UUID=1234-abcd:cryptlvm root=UUID=5678-wxyz modprobe.blacklist=pcspkr
 ```
 - If another kernel is installed, change `/vmlinuz-linux`.
 - If the device is not encrypted, omit `cryptdevice=UUID=<uuid>:cryptlvm`
+- `modeprobe.blacklist=pcspkr` or `module.blacklist=pcspkr` to disable PC speaker
 
 optionally, create a fallback entry
 ```sh
@@ -356,7 +357,7 @@ edit `/boot/loader/entries/arch-fallback.conf`
 title Arch Linux
 linux /vmlinuz-linux
 initrd /initramfs-linux-fallback.img
-options cryptdevice=UUID=<UUID-OF-nvme0n1p2>:cryptlvm root=UUID=<UUID-OF-vg0-root>
+options cryptdevice=UUID=<UUID-OF-nvme0n1p2>:cryptlvm root=UUID=<UUID-OF-vg0-root> modprobe.blacklist=pcspkr
 ```
 
 enable auto update systemd-boot
