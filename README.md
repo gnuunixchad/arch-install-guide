@@ -763,6 +763,13 @@ sudo virsh net-autostart default
 # uncomment dnsmasq in /etc/firejail/firecfg.config
 ```
 
+set libvirt-qemu dir perms
+```sh
+ln -s /data/virt ~/virt
+chmod 750 /data/virt
+setfacl -m u:libvirt-qemu:x /data/virt
+```
+
 ### 2.6.13 electron software (code/codium) themes on wayland
 ```sh
 # make sure xdg-desktop-portal package is installed and run:
