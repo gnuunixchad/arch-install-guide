@@ -474,7 +474,7 @@ dict [dict-gcide] [dict-wn]
 neomutt isync *cyrus-sasl-xoauth2-git*
 
 ### coding
-jdk-openjdk openjdk-src openjdk-doc xorg-xwayland nodejs
+jdk-openjdk openjdk-src openjdk-doc xorg-xwayland xwayland-satellite nodejs
 code
 
 ## 2.3.1
