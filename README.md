@@ -464,7 +464,7 @@ fcitx5 fcitx5-chinese-addons fcitx5-configtool fcitx5-gtk fcitx5-qt fcitx5-anthy
 [fcitx5-skin-fluentdark-git]
 
 ### downloader & torrent
-yt-dlp transmission-cli httrack
+yt-dlp yt-dlp-ejs transmission-cli httrack
 
 ### personal tools
 newsboat task calcurse ttyper
