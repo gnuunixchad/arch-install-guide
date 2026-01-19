@@ -431,9 +431,8 @@ w3m qutebrowser python-adblock
 ### wayland
 foot wlr-randr kanshi wl-clipboard cliphist wf-recorder wl-mirror
 [wshowkeys-mao-git] swaybg swayidle swaylock wmenu <mew> wtype libnotify dunst gammastep slurp
-grim  wob wev [lswt] wlroots0.18 fcft tllist wayland-protocols <dwl> river <dam>
-[rivercarro-git]
-[river-shifttags-git] [wlrctl]
+grim  wob wev [lswt] wlroots0.18 fcft tllist wayland-protocols <dwl> river
+[wlrctl]
 
 ### audio server
 pipewire pipewire-alsa pipewire-pulse pipewire-jack
@@ -519,7 +518,6 @@ libreoffice-still
 
 #### source packages
 - dwl([codeberg](https://codeberg.org/unixchad/dwl)/[github](https://github.com/gnuunixchad/dwl))
-- dam([codeberg](https://github.com/gnuunixchad/dam)/[github](https://codeberg.org/unixchad/dam))
 - mew([codeberg](https://codeberg.org/unixchad/mew)/[github](https://github.com/gnuunixchad/mew))
 - dvtm([codeberg](https://codeberg.org/unixchad/dvtm)/[github](https://github.com/gnuunixchad/dvtm))
 - abduco([codeberg](https://codeberg.org/unixchad/abduco)/[github](https://github.com/gnuunixchad/abduco))
