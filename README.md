@@ -454,7 +454,7 @@ ffmpeg python-mutagen imagemagick mediainfo perl-image-exiftool perl-rename
 kdenlive gimp
 
 ### virtualization
-virt-manager qemu-base libvirt virt-install dnsmasq openbsd-netcat bridge-utils
+virt-manager qemu-base libvirt virt-install dnsmasq openbsd-netcat
 qemu-hw-display-qxl qemu-hw-display-virtio-gpu qemu-hw-display-virtio-gpu-pci
 qemu-chardev-spice qemu-audio-spice
 
