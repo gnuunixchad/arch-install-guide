@@ -431,9 +431,11 @@ w3m qutebrowser python-adblock
 ### wayland
 foot wlr-randr kanshi wl-clipboard cliphist wf-recorder wl-mirror
 [wshowkeys-mao-git] swaybg swayidle swaylock wmenu <mew> wtype libnotify dunst gammastep slurp
-grim  wob wev [lswt] wlroots0.18 fcft tllist wayland-protocols [wlrctl]
+grim  wob wev [lswt] fcft tllist wayland-protocols [wlrctl]
+wlroots 0.19
 <river> <kwm>
 <river-classic> <dam> <rivercarro-git> <river-shifttags-git>
+wlroots 0.18
 <dwl>
 
 ### audio server
