@@ -434,7 +434,7 @@ foot wlr-randr kanshi wl-clipboard cliphist wf-recorder wl-mirror
 grim  wob wev [lswt] fcft tllist wayland-protocols [wlrctl]
 wlroots 0.19
 <river> <kwm>
-<river-classic> <dam> <rivercarro-git> <river-shifttags-git>
+<river-classic> <dam> <river-shifttags-git>
 wlroots 0.18
 <dwl>
 
@@ -524,7 +524,7 @@ libreoffice-still
 #### source packages
 - dwl([codeberg](https://codeberg.org/unixchad/dwl)/[github](https://github.com/gnuunixchad/dwl))
 - kwm([codeberg](https://codeberg.org/unixchad/kwm)/[github](https://github.com/unixchad/kwm))
-- river-classic([codeberg](https://codeberg.org/unixchad/river-classic)/[github](https://github.com/gnuunixchad/river-classic))
+- river-classic(with river-carro)([codeberg](https://codeberg.org/unixchad/river-classic)/[github](https://github.com/gnuunixchad/river-classic))
 - river-shifttags([codeberg](https://codeberg.org/unixchad/river-shittags)/[github](https://github.com/gnuunixchad/river-shifttags))
 - dam([codeberg](https://codeberg.org/unixchad/dam)/[github](https://github.com/gnuunixchad/dam))
 - mew([codeberg](https://codeberg.org/unixchad/mew)/[github](https://github.com/gnuunixchad/mew))
