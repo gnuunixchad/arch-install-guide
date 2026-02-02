@@ -523,8 +523,10 @@ libreoffice-still
 
 #### source packages
 - dwl([codeberg](https://codeberg.org/unixchad/dwl)/[github](https://github.com/gnuunixchad/dwl))
-- kwm([codeberg](https://github.com/gnuunixchad/kwm)/[github](https://codeberg.org/unixchad/kwm))
-- dam([codeberg](https://github.com/gnuunixchad/dam)/[github](https://codeberg.org/unixchad/dam))
+- kwm([codeberg](https://codeberg.org/unixchad/kwm)/[github](https://github.com/unixchad/kwm))
+- river-classic([codeberg](https://codeberg.org/unixchad/river-classic)/[github](https://github.com/gnuunixchad/river-classic))
+- river-shifttags([codeberg](https://codeberg.org/unixchad/river-shittags)/[github](https://github.com/gnuunixchad/river-shifttags))
+- dam([codeberg](https://codeberg.org/unixchad/dam)/[github](https://github.com/gnuunixchad/dam))
 - mew([codeberg](https://codeberg.org/unixchad/mew)/[github](https://github.com/gnuunixchad/mew))
 - dvtm([codeberg](https://codeberg.org/unixchad/dvtm)/[github](https://github.com/gnuunixchad/dvtm))
 - abduco([codeberg](https://codeberg.org/unixchad/abduco)/[github](https://github.com/gnuunixchad/abduco))
