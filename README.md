@@ -432,6 +432,7 @@ w3m qutebrowser python-adblock
 foot wlr-randr kanshi wl-clipboard cliphist wf-recorder wl-mirror
 [wshowkeys-mao-git] swaybg swayidle swaylock wmenu <mew> wtype libnotify dunst gammastep slurp
 grim  wob wev [lswt] fcft tllist wayland-protocols [wlrctl]
+sway
 wlroots 0.19
 <river> <kwm>
 <river-classic> <dam> <river-shifttags-git>
