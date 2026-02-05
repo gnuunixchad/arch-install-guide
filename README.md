@@ -440,7 +440,8 @@ wlroots 0.18
 <dwl>
 
 ### xorg
-xorg-server xorg-xinit xorg-xrandr xorg-xsetroot
+xorg-server xorg-xinit xorg-xrandr xorg-xsetroot xorg-xset xsel xwallpaper
+xss-lock xdotool i3lock picom redshift
 <dwm> <st> <dmenu> <nsxiv>
 
 ### audio server
