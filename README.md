@@ -441,6 +441,7 @@ wlroots 0.18
 
 ### xorg
 xorg-server xorg-xinit xorg-xrandr
+<dwm> <st> <dmenu> <nsxiv>
 
 ### audio server
 pipewire pipewire-alsa pipewire-pulse pipewire-jack
