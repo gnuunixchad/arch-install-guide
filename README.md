@@ -440,7 +440,7 @@ wlroots 0.18
 <dwl>
 
 ### xorg
-xorg-server xorg-xinit xorg-xrandr
+xorg-server xorg-xinit xorg-xrandr xorg-xsetroot
 <dwm> <st> <dmenu> <nsxiv>
 
 ### audio server
