@@ -439,6 +439,10 @@ wlroots 0.19
 wlroots 0.18
 <dwl>
 
+### xorg
+xorg-server xorg-xinit xorg-xrandr
+<dwm> <st> <dmenu> <nsxiv>
+
 ### audio server
 pipewire pipewire-alsa pipewire-pulse pipewire-jack
 noise-suppression-for-voice pulsemixer
