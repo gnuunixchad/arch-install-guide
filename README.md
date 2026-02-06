@@ -442,7 +442,7 @@ wlroots 0.18
 ### xorg
 xorg-server xorg-xinit xorg-xrandr xorg-xsetroot xorg-xset xsel xwallpaper
 xss-lock xdotool i3lock picom redshift
-<dwm> <st> <dmenu> <nsxiv>
+<dwm> <st> <dmenu> <nsxiv> <xob>
 
 ### audio server
 pipewire pipewire-alsa pipewire-pulse pipewire-jack
