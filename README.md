@@ -441,7 +441,8 @@ wlroots 0.18
 
 ### xorg
 xorg-server xorg-xinit xorg-xrandr xorg-xsetroot xorg-xset xsel xwallpaper
-xss-lock xdotool i3lock picom redshift
+xorg-xkill xorg-xev xorg-xinput unclutter
+xss-lock xdotool i3lock picom redshift clipmenu maim slop autorandr screenkey
 <dwm> <st> <dmenu> <nsxiv> <xob>
 
 ### audio server
