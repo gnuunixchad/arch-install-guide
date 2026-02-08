@@ -5,8 +5,8 @@ This guide is licensed under the [GNU Free Documentation License 1.3](./LICENSE)
 Configuration files with my installation can be found on [codeberg](https://codeberg.org/unixchad/dotfiles) and [github](https://github.com/gnuunixchad/dotfiles)(You might see few files linking to `./dotfiles/path/to/file`, its in this repository).
 
 Most of the post-install configuration can be automated by my script. There is no warranty and run at your own risk:
-1. `install-root.sh`([codeberg](https://codeberg.org/unixchad/dotfiles/src/branch/master/install-root.sh)/[github](https://github.com/gnuunixchad/dotfiles/blob/master/install-root.sh))
-2. `install-user.sh`([codeberg](https://codeberg.org/unixchad/dotfiles/src/branch/master/install-user.sh)/[github](https://github.com/gnuunixchad/dotfiles/blob/master/install-user.sh))
+1. [install-root.sh](https://codeberg.org/unixchad/dotfiles/src/branch/master/install-root.sh)
+2. [install-user.sh](https://codeberg.org/unixchad/dotfiles/src/branch/master/install-user.sh)
 
 # 0. setup
 partition:
@@ -32,6 +32,12 @@ boot:
   └─nvme0n1p3     399.9G  part
     └─crypthome   399.9G  crypt /home
 ```
+
+window manager & Wayland compositor options:
+| display protocols | window manager / compositor |
+|:---|:---|
+| Wayland | [dwl](https://codeberg.org/unixchad/dwl) · [kwm](https://codeberg.org/unixchad/kwm) · [river-classic](https://codeberg.org/unixchad/river-classic) · sway |
+| X11 | [dwm](https://codeberg.org/unixchad/dwm) · i3wm |
 
 # 1. archiso
 Verify the PGP signature
@@ -443,6 +449,7 @@ wlroots 0.18
 xorg-server xorg-xinit xorg-xrandr xorg-xsetroot xorg-xset xsel xwallpaper
 xorg-xkill xorg-xev xorg-xinput unclutter
 xss-lock xdotool i3lock picom redshift clipmenu maim slop autorandr screenkey
+i3-wm
 <dwm> <st> <dmenu> <nsxiv> <xob>
 
 ### audio server
@@ -529,14 +536,19 @@ libreoffice-still
 ```
 
 #### source packages
-- dwl([codeberg](https://codeberg.org/unixchad/dwl)/[github](https://github.com/gnuunixchad/dwl))
-- kwm([codeberg](https://codeberg.org/unixchad/kwm)/[github](https://github.com/unixchad/kwm))
-- river-classic(with river-carro)([codeberg](https://codeberg.org/unixchad/river-classic)/[github](https://github.com/gnuunixchad/river-classic))
-- river-shifttags([codeberg](https://codeberg.org/unixchad/river-shittags)/[github](https://github.com/gnuunixchad/river-shifttags))
-- dam([codeberg](https://codeberg.org/unixchad/dam)/[github](https://github.com/gnuunixchad/dam))
-- mew([codeberg](https://codeberg.org/unixchad/mew)/[github](https://github.com/gnuunixchad/mew))
-- dvtm([codeberg](https://codeberg.org/unixchad/dvtm)/[github](https://github.com/gnuunixchad/dvtm))
-- abduco([codeberg](https://codeberg.org/unixchad/abduco)/[github](https://github.com/gnuunixchad/abduco))
+- [damblocks](https://codeberg.org/unixchad/damblocks)
+- [dwl](https://codeberg.org/unixchad/dwl)
+- [kwm](https://codeberg.org/unixchad/kwm)
+- [river-classic](https://codeberg.org/unixchad/river-classic)
+- [river-shifttags](https://codeberg.org/unixchad/river-shittags)
+- [dam](https://codeberg.org/unixchad/dam)
+- [mew](https://codeberg.org/unixchad/mew)
+- [nsxiv](https://codeberg.org/unixchad/nsxiv)
+- [dwm](https://codeberg.org/unixchad/dwm)
+- [st](https://codeberg.org/unixchad/st)
+- [dmenu](https://codeberg.org/unixchad/dmenu)
+- [dvtm](https://codeberg.org/unixchad/dvtm)
+- [abduco](https://codeberg.org/unixchad/abduco)
 
 ## 2.3.2 use my post-install script at your own risk
 which automates most of the rest steps
