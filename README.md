@@ -436,7 +436,7 @@ w3m qutebrowser python-adblock
 
 ### wayland
 foot wlr-randr kanshi wl-clipboard cliphist wf-recorder wl-mirror
-[wshowkeys-mao-git] swaybg swayidle swaylock wmenu <mew> wtype libnotify dunst gammastep slurp
+[wshowkeys-mao-git] swaybg swayidle waylock wmenu <mew> wtype libnotify dunst gammastep slurp
 grim  wob wev [lswt] fcft tllist wayland-protocols [wlrctl]
 sway
 wlroots 0.19
@@ -448,7 +448,7 @@ wlroots 0.18
 ### xorg
 xorg-server xorg-xinit xorg-xrandr xorg-xsetroot xorg-xset xsel xwallpaper
 xorg-xkill xorg-xev xorg-xinput unclutter
-xss-lock xdotool i3lock picom redshift clipmenu maim slop autorandr screenkey
+xss-lock xdotool slock picom redshift clipmenu maim slop autorandr screenkey
 i3-wm
 <dwm> <st> <dmenu> <nsxiv> <xob> <xbanish>
 
