@@ -316,8 +316,9 @@ passwd nate
 visudo
 ```
 uncomment
-```/etc/sudoers.tmp
-%wheel ALL=(ALL:ALL) ALL
+```diff
+-#%wheel ALL=(ALL:ALL) ALL
++%wheel ALL=(ALL:ALL) ALL
 ```
 
 ## 1.18 install and config systemd-boot
@@ -628,9 +629,10 @@ systemctl enable --now paccache.timer
 ```
 
 ### 2.6.3 tlp battery charing threshold
-edit and uncomment this line in `/etc/tlp.conf`
-```/etc/tlp.conf
-STOP_CHARGE_THRESH_BAT1=80
+uncomment in `/etc/tlp.conf`
+```diff
+-#STOP_CHARGE_THRESH_BAT1=80
++STOP_CHARGE_THRESH_BAT1=80
 ```
 start tlp service
 ```sh
@@ -669,9 +671,9 @@ timedatectl set-ntp true
 
 ### 2.6.8 sshd force loggin in with key file
 edit `/etc/ssh/sshd_config`
-```/etc/ssh/sshd_config
-# uncomment this line
-PasswordAuthentication no
+```diff
+-#PasswordAuthentication no
++PasswordAuthentication no
 ```
 
 ```sh
@@ -787,7 +789,12 @@ firewall_backend = "iptables"
 sudo systemctl enable --now libvirtd
 sudo virsh net-define /etc/libvirt/qemu/networks/default.xml
 sudo virsh net-autostart default
-# uncomment dnsmasq in /etc/firejail/firecfg.config
+```
+
+uncomment in `/etc/firejail/firecfg.config` to fix libvirt/qemu network issue
+```diff
+-dnsmasq
++#dnsmasq
 ```
 
 set libvirt-qemu dir perms
@@ -817,9 +824,9 @@ sudo cp /etc/systemd/logind.conf /etc/systemd/logind.conf~
 ```
 
 edit `/etc/systemd/logind.conf`
-```/etc/systemd/logind.conf
-# uncomment and modify to:
-HandlePowerKey=hibernate
+```diff
+-#HandlePowerKey=poweroff
++HandlePowerKey=hibernate
 ```
 
 ### 2.6.17 change default shell & login shell
