@@ -17,6 +17,7 @@ boot:
 - Firmware:         UEFI
 - Bootloader:       systemd-boot
 - Secure Boot:      sbctl
+- initramfs:        mkinitcpio with busybox
 
 ```lsblk
   NAME              SIZE  TYPE  MOUNTPOINTS
@@ -284,8 +285,12 @@ cryptsetup luksKillSlot /dev/nvme0n1p3 1
 ```
 
 ## 1.16 create initial ramdisk environment
+(This guide is using Busybox-based initramfs, instead of
+systemd-based(current archiso's default initramfs), for more details see [hook
+list](https://wiki.archlinux.org/title/Mkinitcpio#Hook_list).)
+
 edit `/etc/mkinitcpio.conf`
-```/etc/mkinitcpio.conf
+```conf
 # add `encrypt`, `lvm2` and `resume` hooks and modify the line to
 HOOKS=base udev autodetect microcode modconf kms keyboard keymap consolefont block encrypt lvm2 filesystems resume fsck
 
