@@ -289,7 +289,7 @@ This guide is switching to systemd-based initramfs, for more details see the
 [hook list](https://wiki.archlinux.org/title/Mkinitcpio#Hook_list).
 
 Edit hooks in `/etc/mkinitcpio.conf`, note that the hooks order does matter.
-```conf
+```sh
 HOOKS=(base systemd autodetect microcode modconf kms keyboard sd-vconsole block sd-encrypt lvm2 filesystems fsck)
 ```
 
