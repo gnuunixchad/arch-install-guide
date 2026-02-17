@@ -17,7 +17,7 @@ boot:
 - Firmware:         UEFI
 - Bootloader:       systemd-boot
 - Secure Boot:      sbctl
-- initramfs:        mkinitcpio with busybox
+- initramfs:        mkinitcpio with systemd
 
 ```lsblk
   NAME              SIZE  TYPE  MOUNTPOINTS
@@ -285,25 +285,18 @@ cryptsetup luksKillSlot /dev/nvme0n1p3 1
 ```
 
 ## 1.16 create initial ramdisk environment
-(This guide is using Busybox-based initramfs, instead of
-systemd-based(current archiso's default initramfs), for more details see [hook
-list](https://wiki.archlinux.org/title/Mkinitcpio#Hook_list).)
+This guide is switching to systemd-based initramfs, for more details see the
+[hook list](https://wiki.archlinux.org/title/Mkinitcpio#Hook_list).
 
-edit `/etc/mkinitcpio.conf`
+Edit hooks in `/etc/mkinitcpio.conf`, note that the hooks order does matter.
 ```conf
-# add `encrypt`, `lvm2` and `resume` hooks and modify the line to
-HOOKS=base udev autodetect microcode modconf kms keyboard keymap consolefont block encrypt lvm2 filesystems resume fsck
-
-# the kernel modules **MUST** be called by the order
-#        - block (block device)
-#        - encrypt (decrypt luks container)
-#        - lvm2 (load logical volumes)
-#        - filesystems
-#        - resume (hibernation)
+HOOKS=(base systemd autodetect microcode modconf kms keyboard sd-vconsole block sd-encrypt lvm2 filesystems fsck)
 ```
 
+Then build initramfs image(s) according to all presets.
 ```sh
-# build initramfs image(s) according to all presets
+# create a dummy vconsole.conf to avoid mknitcpio errors if needed
+touch /etc/vconsole.conf
 mkinitcpio -P
 ```
 
@@ -347,18 +340,16 @@ echo '#'$(blkid | grep 'nvme0n1p2') > /boot/loader/entries/arch.conf
 echo '#'$(blkid | grep 'vg0-root') >> /boot/loader/entries/arch.conf
 ```
 
-edit `/boot/loader/entries/arch.conf`
+edit `/boot/loader/entries/arch.conf`, replace the UUID with the actual ones.
 ```/boot/loader/entries/arch.conf
 title Arch Linux
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
-options cryptdevice=UUID=<UUID-OF-nvme0n1p2>:cryptlvm root=UUID=<UUID-OF-vg0-root>
-# example
-options cryptdevice=UUID=1234-abcd:cryptlvm root=UUID=5678-wxyz modprobe.blacklist=pcspkr
+options rd.luks.name=275798bf-a33c-4cde-a489-625a3957899f=cryptlvm root=UUID=91e69c07-65c4-4fb9-b51e-448fe20564a3 modprobe.blacklist=pcspkr
 ```
 - If another kernel is installed, change `/vmlinuz-linux`.
-- If the device is not encrypted, omit `cryptdevice=UUID=<uuid>:cryptlvm`
-- `modeprobe.blacklist=pcspkr` or `module.blacklist=pcspkr` to disable PC speaker
+- If the device is not encrypted, omit `rd.luks.name=<uuid>=cryptlvm `
+- Add `modeprobe.blacklist=pcspkr` or `module.blacklist=pcspkr` to disable PC speaker
 
 optionally, create a fallback entry
 ```sh
@@ -369,10 +360,10 @@ edit `/boot/loader/entries/arch-fallback.conf`
 title Arch Linux
 linux /vmlinuz-linux
 initrd /initramfs-linux-fallback.img
-options cryptdevice=UUID=<UUID-OF-nvme0n1p2>:cryptlvm root=UUID=<UUID-OF-vg0-root> modprobe.blacklist=pcspkr
+options rd.luks.name=275798bf-a33c-4cde-a489-625a3957899f=cryptlvm root=UUID=91e69c07-65c4-4fb9-b51e-448fe20564a3 modprobe.blacklist=pcspkr
 ```
 
-enable auto update systemd-boot
+enable systemd-boot's auto update
 ```sh
 systemctl enable systemd-boot-update.service`
 ```
