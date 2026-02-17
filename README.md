@@ -106,6 +106,9 @@ fdisk /dev/nvme0n1 <<< m | less
 # `q` quit
 ```
 
+The partition type for `/boot` need to be changed to `ESP`, for `bootctl
+update` to work.
+
 ## 1.6 formatting
 ```sh
 # format the bootloader's partition
