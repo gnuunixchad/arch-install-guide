@@ -67,7 +67,7 @@ setfont /usr/share/kbd/consolefonts/iso01-12x22.psfu.gz
 ## 1.3 connect to wifi (hidden)
 ```sh
 # get full manual of iwct
-iwctl help | less
+iwctl help | less -R
 
 # list network interface for <device> name
 iwctl device list
