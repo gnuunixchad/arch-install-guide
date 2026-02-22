@@ -188,7 +188,7 @@ pacman -Sy && pacman -S archlinux-keyring
 # to verify the signatures of packages.
 
 # install packages
-pacstrap -K /mnt base base-devel linux linux-headers linux-firmware intel-ucode cryptsetup lvm2 vim neovim networkmanager man-db man-pages bash-completion
+pacstrap -K /mnt base base-devel linux linux-headers linux-firmware intel-ucode lvm2 vim neovim networkmanager man-db man-pages bash-completion
 
 # explaining packages
 #    base               minimal package set to define a basic arch linux
