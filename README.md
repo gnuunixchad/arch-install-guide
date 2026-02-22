@@ -354,18 +354,6 @@ options rd.luks.name=275798bf-a33c-4cde-a489-625a3957899f=cryptlvm root=UUID=91e
 - If the device is not encrypted, omit `rd.luks.name=<uuid>=cryptlvm `
 - Add `modeprobe.blacklist=pcspkr` or `module.blacklist=pcspkr` to disable PC speaker
 
-optionally, create a fallback entry
-```sh
-cp /boot/loader/entries/arch{,-fallback}.conf
-```
-edit `/boot/loader/entries/arch-fallback.conf`
-```/boot/loader/entries/arch-fallback.conf
-title Arch Linux
-linux /vmlinuz-linux
-initrd /initramfs-linux-fallback.img
-options rd.luks.name=275798bf-a33c-4cde-a489-625a3957899f=cryptlvm root=UUID=91e69c07-65c4-4fb9-b51e-448fe20564a3 modprobe.blacklist=pcspkr
-```
-
 enable systemd-boot's auto update
 ```sh
 systemctl enable systemd-boot-update.service`
