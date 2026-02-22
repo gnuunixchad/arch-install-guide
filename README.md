@@ -427,11 +427,11 @@ foot wlr-randr kanshi wl-clipboard cliphist wf-recorder wl-mirror
 [wshowkeys-mao-git] swaybg swayidle waylock wmenu <mew> wtype libnotify dunst gammastep slurp
 grim  wob wev [lswt] fcft tllist wayland-protocols [wlrctl]
 sway
-wlroots 0.19
+wlroots 0.19 <river-classic> <dam> <river-shifttags-git>
+
 <river> <kwm>
-<river-classic> <dam> <river-shifttags-git>
-wlroots 0.18
-<dwl>
+
+<dwl> wlroots 0.18
 
 ### xorg
 xorg-server xorg-xinit xorg-xrandr xorg-xsetroot xorg-xset xsel xwallpaper
