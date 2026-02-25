@@ -405,7 +405,7 @@ ARCH_LIST="/path/to/arch.list"
 ### base
 dash zsh zsh-syntax-highlighting vim neovim lf fzf <dvtm> <abduco> git rsync
 openssh openbsd-netcat udisks2 zip unzip 7zip unrar-free stow tree bc calc
-pacman-contrib archlinux-contrib arch-wiki-docs reflactor rebuild-detector
+pacman-contrib archlinux-contrib arch-wiki-docs rebuild-detector
 arch-install-scripts dosfstools exfat-utils wget
 [yay]
 
@@ -427,7 +427,7 @@ foot wlr-randr kanshi wl-clipboard cliphist wf-recorder wl-mirror
 [wshowkeys-mao-git] swaybg swayidle waylock wmenu <mew> wtype libnotify dunst gammastep slurp
 grim  wob wev [lswt] fcft tllist wayland-protocols [wlrctl]
 sway
-wlroots 0.19 <river-classic> <dam> <river-shifttags-git>
+wlroots 0.19 <river-classic> <dam> <river-shifttags>
 
 <river> <kwm>
 
@@ -486,7 +486,7 @@ code
 
 ## 2.3.1
 ### themes
-qt6ct gnome-themes-extra [adwaita-qt5-git] [adwaita-qt5-git]
+qt6ct gnome-themes-extra [adwaita-qt5-git] [adwaita-qtr-git]
 
 ### nvidia
 nvidia-open nvidia-utils nvtop
