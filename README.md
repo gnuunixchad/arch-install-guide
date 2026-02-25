@@ -4,9 +4,11 @@ This guide is licensed under the [GNU Free Documentation License 1.3](./LICENSE)
 
 Configuration files with my installation can be found on [codeberg](https://codeberg.org/unixchad/dotfiles) and [github](https://github.com/gnuunixchad/dotfiles)(You might see few files linking to `./dotfiles/path/to/file`, its in this repository).
 
-Most of the post-install configuration can be automated by my script. There is no warranty and run at your own risk:
+Most of the post-install configuration can be automated by running my
+post-install script AT YOUR OWN RISK:
 1. [install-root.sh](https://codeberg.org/unixchad/dotfiles/src/branch/master/install-root.sh)
 2. [install-user.sh](https://codeberg.org/unixchad/dotfiles/src/branch/master/install-user.sh)
+3. [install-pkgs.sh](https://codeberg.org/unixchad/dotfiles/src/branch/master/install-pkgs.sh)
 
 # 0. setup
 partition:
@@ -538,12 +540,13 @@ libreoffice-still
 - [dvtm](https://codeberg.org/unixchad/dvtm)
 - [abduco](https://codeberg.org/unixchad/abduco)
 
-## 2.3.2 use my post-install script at your own risk
+## 2.3.2 run my post-install scripts AT YOUR OWN RISK
 which automates most of the rest steps
 ```sh
 # clone my dotfiles repo and run
-./dotfiles/install-user.sh
 sudo ./dotfiles/install-root.sh
+./install-user.sh
+sudo ./install-pkg.sh --install --all
 ```
 
 ## 2.4 set tty font permanently (take effect after reboot)
