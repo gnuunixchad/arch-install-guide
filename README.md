@@ -546,7 +546,7 @@ which automates most of the rest steps
 # clone my dotfiles repo and run
 sudo ./dotfiles/install-root.sh
 ./install-user.sh
-sudo ./install-pkg.sh --install --all
+./install-pkgs.sh --install --all
 ```
 
 ## 2.4 set tty font permanently (take effect after reboot)
