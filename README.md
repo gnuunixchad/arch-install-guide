@@ -354,7 +354,7 @@ options rd.luks.name=275798bf-a33c-4cde-a489-625a3957899f=cryptlvm root=UUID=91e
 ```
 - If another kernel is installed, change `/vmlinuz-linux`.
 - If the device is not encrypted, omit `rd.luks.name=<uuid>=cryptlvm `
-- Add `modeprobe.blacklist=pcspkr` or `module.blacklist=pcspkr` to disable PC speaker
+- Add `modprobe.blacklist=pcspkr` or `module.blacklist=pcspkr` to disable PC speaker
 
 enable systemd-boot's auto update
 ```sh
