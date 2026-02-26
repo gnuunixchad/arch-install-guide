@@ -544,9 +544,9 @@ libreoffice-still
 which automates most of the rest steps
 ```sh
 # clone my dotfiles repo and run
+./install-pkgs.sh --install --base
 sudo ./dotfiles/install-root.sh
 ./install-user.sh
-./install-pkgs.sh --install --all
 ```
 
 ## 2.4 set tty font permanently (take effect after reboot)
