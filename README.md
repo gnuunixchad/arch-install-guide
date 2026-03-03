@@ -482,7 +482,7 @@ neomutt isync *cyrus-sasl-xoauth2-git*
 
 ### coding
 jdk-openjdk openjdk-src openjdk-doc xorg-xwayland xwayland-satellite
-zig scdoc
+zig scdoc meson
 nodejs tree-sitter-cli
 code
 
