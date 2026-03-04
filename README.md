@@ -610,7 +610,7 @@ Vendor Keys:	microsoft
 ```
 
 8. make sure `systemd-boot-update.service` is enabled for auto signing the
-future bootloaders and kernels
+future bootloaders and kernels, for more details see [arch wiki](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Automatic_signing_with_the_pacman_hook).
 
 ### 2.6.2 automatically clean pacman cache
 ```sh
