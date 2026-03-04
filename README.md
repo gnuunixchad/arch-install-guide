@@ -353,8 +353,9 @@ initrd /initramfs-linux.img
 options rd.luks.name=275798bf-a33c-4cde-a489-625a3957899f=cryptlvm root=UUID=91e69c07-65c4-4fb9-b51e-448fe20564a3 modprobe.blacklist=pcspkr
 ```
 - If another kernel is installed, change `/vmlinuz-linux`.
-- If the device is not encrypted, omit `rd.luks.name=<uuid>=cryptlvm `
-- Add `modprobe.blacklist=pcspkr` or `module.blacklist=pcspkr` to disable PC speaker
+- If the device is not encrypted, omit `rd.luks.name=<uuid>=cryptlvm `.
+- Add `modprobe.blacklist=pcspkr` or `module.blacklist=pcspkr` to disable PC speaker on Thinkpad.
+- A separate `initrd` for microcode is unnecessary since [mkinitcpio v38](https://archlinux.org/news/mkinitcpio-hook-migration-and-early-microcode/).
 
 enable systemd-boot's auto update
 ```sh
