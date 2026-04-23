@@ -460,7 +460,7 @@ mpv ncmpcpp mpd mpc
 
 ### multi-media editor
 ffmpeg python-mutagen imagemagick mediainfo perl-image-exiftool perl-rename
-kdenlive gimp
+kdenlive gimp inkscape
 
 ### virtualization
 virt-manager qemu-base libvirt virt-install dnsmasq openbsd-netcat
