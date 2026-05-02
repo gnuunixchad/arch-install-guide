@@ -420,7 +420,7 @@ efibootmgr sbctl
 btop ncdu iftop sysstat smartmontools powertop
 
 ### file sharing
-android-file-transfer samba qrtool
+android-tools android-file-transfer samba qrtool
 
 ### web browser
 w3m qutebrowser python-adblock
