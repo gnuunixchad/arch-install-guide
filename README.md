@@ -295,7 +295,13 @@ This guide is switching to systemd-based initramfs, for more details see the
 
 Edit hooks in `/etc/mkinitcpio.conf`, note that the hooks order does matter.
 ```sh
-HOOKS=(base systemd autodetect microcode modconf kms keyboard sd-vconsole block sd-encrypt lvm2 filesystems fsck)
+# remove:
+#   - kms (disable early KMS start to avoid resolution change while sd-encrypt
+#     prompting passphrase)
+# add:
+#   - sd-encrypt
+#   _ lvm2
+HOOKS=(base systemd autodetect microcode modconf keyboard sd-vconsole block sd-encrypt lvm2 filesystems fsck)
 ```
 
 Then build initramfs image(s) according to all presets.
