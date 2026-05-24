@@ -190,7 +190,7 @@ pacman -Sy && pacman -S archlinux-keyring
 # to verify the signatures of packages.
 
 # install packages
-pacstrap -K /mnt base base-devel linux linux-headers linux-firmware intel-ucode lvm2 vim neovim networkmanager man-db man-pages bash-completion
+pacstrap -K /mnt base base-devel linux linux-headers linux-firmware fwupd intel-ucode lvm2 vim neovim networkmanager man-db man-pages bash-completion
 
 # explaining packages
 #    base               minimal package set to define a basic arch linux
@@ -602,6 +602,7 @@ sudo sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
 sudo sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
 sudo sbctl sign -s /boot/vmlinuz-linux
 sudo sbctl sign -s -o /usr/lib/systemd/boot/efi/systemd-bootx64.efi.signed /usr/lib/systemd/boot/efi/systemd-bootx64.efi
+sudo sbctl sign -s -o /usr/lib/fwupd/efi/fwupdx64.efi.signed /usr/lib/fwupd/efi/fwupdx64.efi
 ```
 
 6. reboot into UEFI utilities, secure boot should be enabled automatically, if
