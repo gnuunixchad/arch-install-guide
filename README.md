@@ -492,6 +492,7 @@ jdk-openjdk openjdk-src openjdk-doc xorg-xwayland xwayland-satellite
 zig scdoc meson
 nodejs tree-sitter-cli
 code
+npm jdk21-openjdk openjdk21-doc openjdk21-src
 
 ## 2.3.1
 ### themes
